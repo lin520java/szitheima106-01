@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+<!--  拦截的规则
+  auto-config: true, 登陆处理，自动装载内置的过滤器12个，登陆页面的过滤器...
+  use-expressions: true时标定访问资源是否使用表达式 hasAny... hasRole hasAut...
+                   false，代表使用角色来做访问控制,
+                    security:intercept-url access的值必须是以ROLE_打头，否则启动报错
+  -->
+    <security:http auto-config="true" use-expressions="false">
+    <!--  拦截的url  -->
+        <security:intercept-url pattern="/**" access="ROLE_ADMON"/>
+    </security:http>
+<!--  认证管理器  -->
+    <security:authentication-manager>
+    <!--  提供认证用户信息，登陆用户信息(用户名，密码，权限集合）  -->
+        <security:authentication-provider>
+            <!--自定义的用户信息服务-->
+            <security:user-service>
+                <!--写死内存中存在着这样的一个用户信息
+                    {noop} 使用明文,讲密码加密时说.
+                    authorities: 这个用户所拥有的权限集合
+                -->
+                <security:user name="admin" authorities="ROLE_ADMON" password="{noop}admin"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
+</beans>
