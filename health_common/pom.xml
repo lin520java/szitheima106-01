@@ -12,6 +12,17 @@
     <artifactId>health_common</artifactId>
 
     <dependencies>
+        <!-- 导入iText报表，支持中文 -->
+        <dependency>
+            <groupId>com.alpha</groupId>
+            <artifactId>itextasian</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!--导入Itext报表-->
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-java-sdk-core</artifactId>

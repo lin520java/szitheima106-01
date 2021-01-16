@@ -128,4 +128,10 @@
         select checkitem_id from t_checkgroup_checkitem where checkgroup_id=#{id}
      )
     </select>
+
+    <select id="getSetmealReport" resultType="map">
+        select s.name,ifnull(t.cnt,0) value from t_setmeal s left join (
+            select setmeal_id,count(1) cnt from t_order group by setmeal_id
+        ) t on s.id=t.setmeal_id
+    </select>
 </mapper>

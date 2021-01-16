@@ -2,6 +2,8 @@ package com.itheima.health.service;
 
 import com.itheima.health.pojo.Member;
 
+import java.util.List;
+
 public interface MemberService {
     /**
      * 通过手机号码判断是否为会员
@@ -15,4 +17,11 @@ public interface MemberService {
      * @param member
      */
     void add(Member member);
+
+    /**
+     * 统计每个月的会员总数量
+     * @param months
+     * @return
+     */
+    List<Integer> getMemberReport(List<String> months);
 }

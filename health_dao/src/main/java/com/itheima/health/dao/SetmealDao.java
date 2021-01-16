@@ -7,6 +7,7 @@ import com.itheima.health.pojo.Setmeal;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface SetmealDao {
     /**
@@ -92,4 +93,11 @@ public interface SetmealDao {
     List<CheckGroup> findCheckGroupListBySetmealId(int id);
 
     List<CheckItem> findCheckItemByCheckGroupId(Integer id);
+
+    /**
+     * 统计每个套餐的预约数
+     * @return
+     */
+    List<Map<String, Object>> getSetmealReport();
+
 }

@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Service(interfaceClass = SetmealService.class)
 public class SetmealServiceImpl implements SetmealService {
@@ -174,5 +175,14 @@ public class SetmealServiceImpl implements SetmealService {
             setmeal.setCheckGroups(checkGroups);
         }
         return setmeal;
+    }
+
+    /**
+     * 统计每个套餐的预约数
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> getSetmealReport() {
+        return setmealDao.getSetmealReport();
     }
 }
